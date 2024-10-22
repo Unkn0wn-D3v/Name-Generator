@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <h1>Mason Middle Name Generator v1.0</h1>
+  </head>
+  <body>
+    <button id="button">Generate</button>
+    <h2>Mason's new middle name is...</h2>
+    <h3 id="middlenametext">Click the generate button to get a result!</h3>
+    <h2>Changelogs</h2>
+
+    <script>
+      const nameTable = [
+        "Otto",
+        "William",
+        "Dorothy",
+        "Bartholemew",
+        "Wayne",
+        "Albert",
+        "Mason",
+        "Garret",
+        "Jaquavion",
+        "Beiber",
+        "Brad",
+        "Charles",
+        "Arthur",
+        "David",
+        "Quenacious",
+        "Thomas",
+        "Beverly",
+        "Marcus",
+        "Steven",
+        "Jeffery",
+        "Darnell",
+        "LeBron",
+        "Octavious",
+        "Nero",
+        "Monsoon",
+        "Dartsch",
+        "Samuel",
+        "Edith",
+        "Hannibal",
+        "Julius",
+        "Jim",
+        "Joestar",
+        "D.",
+		  "Ethel",
+		  "Pneumonoultramicroscopicsilicovolcanoconiosis",
+		  "Antidisestablishmentarianism",
+		  "Hippopotomonstrosesquippedaliophobia",
+		  "Neville",
+		  "Guillermo",
+		  "Pablo",
+		  "Martin",
+		  "Franklin",
+		  "Aaron",
+		  "Reynolds",
+		  "Orville",
+		  "Jameson",
+		  "Johnson",
+		  "Zachary",
+		  "Gorlock",
+		  "Masoon"
+      ];
+
+      const button = document.querySelector("#button");
+      const generatorText = document.querySelector("#middlenametext");
+
+      button.addEventListener("click", () => {
+        var randomName =
+          nameTable[Math.floor(Math.random() * nameTable.length)];
+        generatorText.textContent = randomName;
+      });
+    </script>
+  </body>
+</html>
