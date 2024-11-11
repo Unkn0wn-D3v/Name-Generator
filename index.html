@@ -1,15 +1,13 @@
 <html>
   <head>
-    <h1>Mason Middle Name Generator v1.1</h1>
+    <img src="mason.jpg" class="img" />
+    <h1 id="top">Mason Middle Name Generator v1.1</h1>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
-    <button id="button">Generate</button>
+    <button id="button" class="button">Generate</button>
     <h2>Mason's new middle name is...</h2>
     <h3 id="middlenametext">Click the generate button to get a result!</h3>
-    <h2>Changelogs</h2>
-    <h4>v1.0</h4>
-    <p>-Created name generator</p>
-    <h4>-Added more names<br />-Bug fixes</h4>
 
     <script>
       const nameTable = [
@@ -73,15 +71,52 @@
         "Watson",
         "Wesely",
         "Windsor",
+        "Wimbledon",
+        "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+        "Zenin",
       ];
 
       const button = document.querySelector("#button");
       const generatorText = document.querySelector("#middlenametext");
 
+      var active = false;
+
       button.addEventListener("click", () => {
+        if (!active) {
+          active = true;
+          let nameChange = setInterval(function () {
+            changeRandomName();
+          }, 50);
+
+          button.textContent = "Generating";
+          button.style.backgroundColor = "lightgrey";
+
+          let buttonChange = setInterval(function () {
+            button.textContent = button.textContent + ".";
+          }, 500);
+
+          sleep(2000).then(() => {
+            clearInterval(nameChange);
+            clearInterval(buttonChange);
+            button.textContent = "Generate";
+            button.style.backgroundColor = "lightgreen";
+            active = false;
+          });
+        }
+      });
+
+      function changeRandomName() {
         var randomName =
           nameTable[Math.floor(Math.random() * nameTable.length)];
         generatorText.textContent = randomName;
+      }
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      sleep(2000).then(() => {
+        console.log("World!");
       });
     </script>
   </body>
